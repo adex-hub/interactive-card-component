@@ -37,7 +37,7 @@ body {
         left: 8%;
 
         .card-front {
-          background: url("images/bg-card-front.png") no-repeat;
+          background: url("../public/images/bg-card-front.png") no-repeat;
           background-size: cover;
           width: 447px;
           height: 245px;
@@ -59,7 +59,7 @@ body {
           }
         }
         .card-back {
-          background: url("images/bg-card-back.png") no-repeat;
+          background: url("../public/images/bg-card-back.png") no-repeat;
           width: 447px;
           height: 245px;
           margin: 0 0 0 5rem;
