@@ -129,9 +129,9 @@ body {
             visibility: visible;
           }
 
-          &:not(:placeholder-shown):valid ~ .input-error {
-            visibility: hidden;
-          }
+          // &:not(:placeholder-shown):valid ~ .input-error {
+          //   visibility: hidden;
+          // }
         }
 
         .side-by-side-inputs {
