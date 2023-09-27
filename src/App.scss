@@ -1,0 +1,332 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+// From the style guide
+// Colors - primary
+$gradient-color-1: hsl(249, 99%, 64%);
+$gradient-color-2: hsl(278, 94%, 30%);
+$error: hsl(0, 100%, 66%);
+
+// Colors - neutral
+$white: hsl(0, 0%, 100%);
+$light-gv: hsl(270, 3%, 87%);
+$dark-gv: hsl(279, 6%, 55%);
+$v-dark-violet: hsl(278, 68%, 11%);
+
+// Actual Styling
+body {
+  .app {
+    display: flex;
+
+    // Card styling
+    .images {
+      display: flex;
+      .cards-bg {
+        height: 100vh;
+        width: 483px;
+      }
+      .cards {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 8%;
+
+        .card-front {
+          background: url("images/bg-card-front.png") no-repeat;
+          background-size: cover;
+          width: 447px;
+          height: 245px;
+          color: $white;
+          margin-bottom: 2.5rem;
+          box-shadow: 0 0 1.8rem #00000033;
+          border-radius: 10px;
+          padding: 2rem;
+          .card-number {
+            margin: 3.2rem 0 0 0;
+            font-size: 31.1px;
+            letter-spacing: 0.1ch;
+          }
+          .last-details {
+            margin: 1.7rem 0 0 0;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+        .card-back {
+          background: url("images/bg-card-back.png") no-repeat;
+          width: 447px;
+          height: 245px;
+          margin: 0 0 0 5rem;
+          box-shadow: 0 0 1.8rem #00000033;
+          padding: 2rem;
+          border-radius: 10px;
+          .value {
+            transform: translate(20rem, 4.9rem);
+            width: fit-content;
+            color: $light-gv;
+          }
+        }
+      }
+    }
+
+    // Form styling
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 380px;
+
+        label {
+          text-transform: uppercase;
+          font-size: 12px;
+          color: $v-dark-violet;
+          margin: 0 0 12px 0;
+        }
+
+        input {
+          height: 43px;
+          font-size: 18px;
+          padding: 1rem;
+          outline: none;
+          border: 1.5px solid $light-gv;
+
+          &::placeholder {
+            color: $dark-gv;
+          }
+
+          &:focus {
+            border-image-source: linear-gradient(
+              $gradient-color-1,
+              $gradient-color-2
+            );
+            border-width: 1.5px;
+            border-image-slice: 1;
+          }
+
+          ~ .input-error {
+            position: -ms-page;
+            font-size: 12px;
+            margin: 6px 0 19px 0;
+            visibility: hidden;
+            color: $error;
+          }
+
+          &:not(:focus):invalid {
+            border-color: $error;
+          }
+
+          &:not(:focus):invalid ~ .input-error {
+            visibility: visible;
+          }
+
+          &:not(:placeholder-shown):valid ~ .input-error {
+            visibility: hidden;
+          }
+        }
+
+        .side-by-side-inputs {
+          display: flex;
+          // flex-wrap: wrap;
+          .vertically-aligned {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .date-inputs {
+            display: flex;
+            gap: 10px;
+            margin: 0 -2rem 0 0;
+
+            input {
+              width: 78px;
+            }
+          }
+          input#cvc {
+            width: 189px;
+          }
+        }
+      }
+    }
+
+    // Thank-you page styling
+    .complete-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      h2 {
+        color: $v-dark-violet;
+        font-weight: normal;
+        letter-spacing: 0.3ch;
+        margin: 42px 0 28px 0;
+      }
+
+      p {
+        color: $dark-gv;
+        margin: 0 0 48px 0;
+      }
+
+      .thanks-display {
+        width: 380px;
+        text-align: center;
+      }
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  button {
+    height: 53px;
+    background: $v-dark-violet;
+    border-radius: 8px;
+    outline: none;
+    color: $white;
+    border: none;
+    font-size: 18px;
+    margin: 10px 0 0 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      scale: 1.05;
+    }
+  }
+}
+
+// Styling for other devices
+@media (max-width: 1150px) {
+  body {
+    .app {
+      // Card styling
+      .images {
+        .cards-bg {
+          width: fit-content;
+        }
+        .cards {
+          left: 0%;
+          // transform: translateX(-60%);
+          .card-front {
+            scale: 0.8;
+            transform: translateX(-5%);
+            margin-bottom: 1rem;
+          }
+          .card-back {
+            scale: 0.8;
+            margin: 0rem;
+            transform: translateX(-5%);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Start of dimensional change. (Might change the px width of form to vw or I'd just check the design and fix it up.)
+@media (max-width: 824px) {
+  body {
+    .app {
+      flex-direction: column;
+      // Card Styling once again
+      .images {
+        .cards-bg {
+          height: 30vh;
+          width: 100%;
+        }
+        .cards {
+          top: 15rem;
+          display: flex;
+          width: calc(100% - 4.6rem);
+          justify-content: center;
+          align-items: center;
+          height: fit-content;
+          flex-direction: column-reverse;
+          .card-front {
+            scale: 0.7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            transform: translateY(-13.2rem);
+            z-index: 99;
+          }
+          .card-back {
+            scale: 0.7;
+            transform: translateX(6rem);
+          }
+        }
+      }
+
+      // Form-styling
+      .form-container {
+        height: 80vh;
+        z-index: 500;
+      }
+
+      // Thank you page styling
+      .complete-container {
+        height: 70vh;
+        overflow: hidden;
+
+        p {
+          margin: 0 0 49px 0;
+        }
+        .thanks-display {
+          width: 325px;
+        }
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 440px) {
+  body {
+    .app {
+      // Card Styling
+      .images {
+        .cards-bg {
+          height: 240px;
+        }
+        .cards {
+          top: 28%;
+          scale: 0.88;
+          width: calc(100% - 3.61rem);
+        }
+      }
+
+      // Form styling
+      .form-container {
+        height: 75vh;
+        form {
+          width: 325px;
+
+          .side-by-side-inputs {
+            .date-inputs {
+              margin: 0 -1.75rem 0 0;
+              gap: 8px;
+
+              input {
+                width: 70px;
+              }
+            }
+            #cvc {
+              width: 165px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
