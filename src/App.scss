@@ -98,7 +98,7 @@ body {
           font-size: 18px;
           padding: 1rem;
           outline: none;
-          border: 1.5px solid $light-gv;
+          border: 1px solid $light-gv;
 
           &::placeholder {
             color: $dark-gv;
@@ -129,9 +129,9 @@ body {
             visibility: visible;
           }
 
-          // &:not(:placeholder-shown):valid ~ .input-error {
-          //   visibility: hidden;
-          // }
+          &:not(:placeholder-shown):valid ~ .input-error {
+            visibility: hidden;
+          }
         }
 
         .side-by-side-inputs {
@@ -151,7 +151,7 @@ body {
               width: 78px;
             }
           }
-          input#cvc {
+          #cvc {
             width: 189px;
           }
         }
